@@ -53,6 +53,7 @@ export function SlideOutForm() {
   return (
     <AnimatePresence>
       <motion.div
+        key="slide-out-backdrop"
         className="fixed inset-0 bg-black/50 z-40"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -61,6 +62,7 @@ export function SlideOutForm() {
       />
 
       <motion.div
+        key="slide-out-panel"
         className="fixed top-0 right-0 bottom-0 w-full sm:w-[500px] lg:w-[600px] bg-white dark:bg-gray-900 shadow-2xl z-50 overflow-y-auto border-l border-teal-200/50 dark:border-teal-700/50"
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
