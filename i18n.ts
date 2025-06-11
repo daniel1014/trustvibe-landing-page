@@ -8,7 +8,7 @@ const resources = {
   en: {
     translation: {
       common: {
-        title: "Trust Vibe: A Trust-First Hub for UK Chinese Christians",
+        title: "Trust Vibe\nA Faith-connected community hub for UK Chinese Christians",
         subtitle: "Find trusted builders, tutors & helpers within our faith community.",
         provideServices: "I Provide Services",
         needServices: "I Need Services",
@@ -95,7 +95,7 @@ const resources = {
   zh: {
     translation: {
       common: {
-        title: "Trust Vibe 英國華人基督徒的信任平台",
+        title: "Trust Vibe\n英國華人基督徒的信任平台",
         subtitle: "在我們的信仰社區中尋找值得信賴的建築商、導師和助手。",
         provideServices: "提供服務",
         needServices: "需要服務",
@@ -120,25 +120,25 @@ const resources = {
         reliabilityDesc: "在需要時從您可以信任的人那裡獲得幫助。",
       },
       story: {
-        headline: "為何有「Trust Vibe」這個平台？",
+        headline: "為何設立「Trust Vibe」這個平台？",
         subheadline: "我們的故事",
         card1: {
-          title: "我地曾經…",
-          content: "想整屋但唔知邊個 builder 信得過",
+          title: "我們曾經…",
+          content: "想找人維修家居，卻苦於不認識可信賴的人幫忙",
         },
         card2: {
-          title: "我地曾經…",
-          content: "有才華但唔知點樣幫到教會群體",
+          title: "我們曾經…",
+          content: "身懷才華，卻缺乏服侍教會群體的機會",
         },
         card3: {
-          title: "我地曾經…",
-          content: "喺英國教會聚會，但信仰生活同日常生活係分開嘅",
+          title: "我們曾經…",
+          content: "雖身處英國教會，卻感到信仰生活與日常生活的分離",
         },
         answer: {
-          title: "所以，我哋建立 Trust Vibe。",
+          title: "因此，我們創立了 Trust Vibe。",
           subtitle: "一個源於共同掙扎、植根於信仰、建立於信任的平台。",
-          content1: "我哋想讓有心服侍嘅人可以用才幹服侍群體，",
-          content2: "讓搵緊幫手嘅人喺主內更放心咁尋找幫助。",
+          content1: "我們希望讓有心志服侍的肢體，能憑藉其恩賜才幹，為主內社群貢獻所長；",
+          content2: "也讓尋求幫助的肢體，能在主內社群中，更安心地找到所需支援。",
         }
       },
       contact: {
@@ -150,7 +150,7 @@ const resources = {
       },
       forms: {
         servicesOffered: "提供的服務",
-        churchAffiliation: "教會隸屬關係",
+        churchAffiliation: "你平常有去教會嗎",
         churchName: "教會名稱",
         keyFeatures: "平台上期望的主要功能",
         email: "電子郵件",
