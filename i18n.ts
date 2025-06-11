@@ -1,11 +1,12 @@
-import { createInstance } from "i18next"
+import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 
-const i18n = createInstance()
+// Default language for i18next.
+const defaultLng = 'zh'; // Setting 'zh' as the application default directly
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
+const resources = {
+  en: {
+    translation: {
       common: {
         title: "Trust Vibe: A Trust-First Hub for UK Chinese Christians",
         subtitle: "Find trusted builders, tutors & helpers within our faith community.",
@@ -30,6 +31,35 @@ i18n.use(initReactI18next).init({
         trustDesc: "Find service providers vetted by your own church community.",
         communityDesc: "Connect with Christians who share your values and faith.",
         reliabilityDesc: "Get help when you need it from people you can trust.",
+      },
+      story: {
+        headline: "Why Trust Vibe?",
+        subheadline: "Understanding Our Journey",
+        card1: {
+          title: "We once experienced...",
+          content: "Wanting to renovate our homes but not knowing which builders we could truly trust",
+        },
+        card2: {
+          title: "We once experienced...",
+          content: "Having skills and talents but not knowing how to practically serve our church community",
+        },
+        card3: {
+          title: "We once experienced...",
+          content: "Attending church regularly in the UK, but feeling our faith life was disconnected from daily living",
+        },
+        answer: {
+          title: "So, we built Trust Vibe.",
+          subtitle: "A platform born out of shared struggles, grounded in faith, and built for trust.",
+          content1: "We want people with a heart to serve to offer their gifts meaningfully,",
+          content2: "and those seeking help to find peace of mind in a trusted, faith-filled community.",
+        }
+      },
+      contact: {
+        title: "Get in Touch",
+        email: "Email",
+        phone: "Phone",
+        instagram: "Instagram",
+        close: "Close",
       },
       forms: {
         servicesOffered: "Services Offered",
@@ -56,13 +86,19 @@ i18n.use(initReactI18next).init({
         speed: "Speed",
         churchConnection: "Church Connection",
       },
-    },
-    zh: {
+      segments: {
+        getStartedToday: "Get Started Today",
+        choosePath: "Choose your path and join our trusted community",
+      },
+    }
+  },
+  zh: {
+    translation: {
       common: {
-        title: "Trust Vibe: 英國華人基督徒的信任平台",
+        title: "Trust Vibe 英國華人基督徒的信任平台",
         subtitle: "在我們的信仰社區中尋找值得信賴的建築商、導師和助手。",
-        provideServices: "我提供服務",
-        needServices: "我需要服務",
+        provideServices: "提供服務",
+        needServices: "需要服務",
         whyTrustVibe: "為什麼選擇 Trust Vibe？",
         mission: "在一個值得信賴的平台上連接信仰和日常生活。",
         scripture: "我們愛，因為神先愛我們。(約翰一書 4:19)",
@@ -82,6 +118,35 @@ i18n.use(initReactI18next).init({
         trustDesc: "尋找由您自己的教會社區審核的服務提供者。",
         communityDesc: "與分享您的價值觀和信仰的基督徒聯繫。",
         reliabilityDesc: "在需要時從您可以信任的人那裡獲得幫助。",
+      },
+      story: {
+        headline: "為何有「Trust Vibe」這個平台？",
+        subheadline: "我們的故事",
+        card1: {
+          title: "我地曾經…",
+          content: "想整屋但唔知邊個 builder 信得過",
+        },
+        card2: {
+          title: "我地曾經…",
+          content: "有才華但唔知點樣幫到教會群體",
+        },
+        card3: {
+          title: "我地曾經…",
+          content: "喺英國教會聚會，但信仰生活同日常生活係分開嘅",
+        },
+        answer: {
+          title: "所以，我哋建立 Trust Vibe。",
+          subtitle: "一個源於共同掙扎、植根於信仰、建立於信任的平台。",
+          content1: "我哋想讓有心服侍嘅人可以用才幹服侍群體，",
+          content2: "讓搵緊幫手嘅人喺主內更放心咁尋找幫助。",
+        }
+      },
+      contact: {
+        title: "聯繫我們",
+        email: "電子郵件",
+        phone: "電話",
+        instagram: "Instagram",
+        close: "關閉",
       },
       forms: {
         servicesOffered: "提供的服務",
@@ -108,13 +173,24 @@ i18n.use(initReactI18next).init({
         speed: "速度",
         churchConnection: "教會聯繫",
       },
+      segments: {
+        getStartedToday: "今天就開始",
+        choosePath: "選擇你有興趣的角色，加入我們信任的社區",
+      },
+    }
+  }
+}
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: defaultLng,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false // React already safes from xss
     },
-  },
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-})
+    debug: process.env.NODE_ENV === 'development',
+  })
 
 export default i18n

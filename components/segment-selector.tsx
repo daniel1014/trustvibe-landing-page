@@ -44,9 +44,11 @@ export function SegmentSelector() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-teal-700 to-amber-600 bg-clip-text text-transparent mb-4">
-            Get Started Today
+            {t("segments.getStartedToday")}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400">Choose your path and join our trusted community</p>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            {t("segments.choosePath")}
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

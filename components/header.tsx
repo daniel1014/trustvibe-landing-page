@@ -1,8 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useAtom } from "jotai"
-import { localeAtom, type Locale } from "@/lib/atoms"
 import { useTranslation } from "./i18n-provider"
 import { Heart, Mail, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,14 +9,12 @@ import { ContactPopup } from "@/components/contact-popup"
 import { motion } from "framer-motion"
 
 export function Header() {
-  const { t, changeLanguage } = useTranslation()
-  const [locale, setLocale] = useAtom(localeAtom)
+  const { t, changeLanguage, currentLanguage } = useTranslation()
   const [isContactOpen, setIsContactOpen] = useState(false)
 
   const toggleLanguage = () => {
-    const newLocale: Locale = locale === "en-UK" ? "zh-TW" : "en-UK"
-    setLocale(newLocale)
-    changeLanguage(newLocale === "en-UK" ? "en" : "zh")
+    const newLangCode = currentLanguage === "zh" ? "en" : "zh"
+    changeLanguage(newLangCode)
   }
 
   return (
@@ -69,7 +65,7 @@ export function Header() {
               className="flex items-center gap-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white border-0 shadow-md transition-all duration-200"
             >
               <Globe className="h-4 w-4" />
-              <span className="text-sm font-medium">{locale === "en-UK" ? "中文" : "EN"}</span>
+              <span className="text-sm font-medium">{currentLanguage === "zh" ? "EN" : "中文"}</span>
             </Button>
 
             {/* Theme Toggle */}

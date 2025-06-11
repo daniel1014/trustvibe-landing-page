@@ -15,7 +15,7 @@ import { collection, addDoc } from "firebase/firestore"
 import { db } from "@/lib/firebase"
 
 export function SlideOutForm() {
-  const { t } = useTranslation()
+  const { t, currentLanguage } = useTranslation()
   const [formType, setFormType] = useAtom(formTypeAtom)
   const [formData, setFormData] = useAtom(formDataAtom)
   const [submitted, setSubmitted] = useAtom(submittedAtom)
@@ -36,7 +36,7 @@ export function SlideOutForm() {
         formType,
         responses: formData,
         email: formData.email,
-        locale: "en-UK", // TODO: Get from locale atom
+        locale: currentLanguage,
         submittedAt: new Date(),
       })
 
