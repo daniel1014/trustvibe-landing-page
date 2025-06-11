@@ -26,7 +26,6 @@ export function WhyTrustVibe() {
         {/* Story Cards */}
         <div className="space-y-12 mb-16">
           <StoryCard
-            emoji="💭"
             icon={<Home className="h-6 w-6" />}
             title={t("story.card1.title")}
             content={t("story.card1.content")}
@@ -34,7 +33,6 @@ export function WhyTrustVibe() {
             gradient="from-teal-50 to-teal-100 dark:from-teal-900/30 dark:to-teal-800/30"
           />
           <StoryCard
-            emoji="🎓"
             icon={<Users className="h-6 w-6" />}
             title={t("story.card2.title")}
             content={t("story.card2.content")}
@@ -42,7 +40,6 @@ export function WhyTrustVibe() {
             gradient="from-amber-50 to-amber-100 dark:from-amber-900/30 dark:to-amber-800/30"
           />
           <StoryCard
-            emoji="🙏"
             icon={<Heart className="h-6 w-6" />}
             title={t("story.card3.title")}
             content={t("story.card3.content")}
@@ -80,7 +77,6 @@ function HeaderSection() {
 }
 
 interface StoryCardProps {
-  emoji: string
   icon: React.ReactNode
   title: string
   content: string
@@ -88,7 +84,7 @@ interface StoryCardProps {
   gradient: string
 }
 
-function StoryCard({ emoji, icon, title, content, delay, gradient }: StoryCardProps) {
+function StoryCard({ icon, title, content, delay, gradient }: StoryCardProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
 
@@ -103,11 +99,6 @@ function StoryCard({ emoji, icon, title, content, delay, gradient }: StoryCardPr
       <div
         className={`relative bg-gradient-to-br ${gradient} p-8 md:p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 backdrop-blur-sm`}
       >
-        {/* Emoji Header */}
-        <div className="flex items-center justify-center mb-6">
-          <div className="text-4xl md:text-5xl mb-2">{emoji}</div>
-        </div>
-
         {/* Icon and Title */}
         <div className="flex items-center justify-center mb-6">
           <div className="p-3 bg-white/80 dark:bg-gray-800/80 rounded-full shadow-md mr-4">
@@ -152,7 +143,7 @@ function AnswerReveal() {
         {/* Main Answer */}
         <div className="text-center mb-8">
           <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-teal-700 to-amber-600 bg-clip-text text-transparent mb-4">
-            ✨ {t("story.answer.title")}
+            {t("story.answer.title")}
           </h3>
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 italic leading-relaxed">
             {t("story.answer.subtitle")}
@@ -162,13 +153,13 @@ function AnswerReveal() {
         {/* Content Points */}
         <div className="space-y-4 mb-6">
           <div className="flex items-start">
-            <span className="text-green-500 text-xl mr-3 mt-1">🟢</span>
+            <span className="text-green-500 text-xl mr-3 mt-1">✅</span>
             <p className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200 leading-relaxed">
               {t("story.answer.content1")}
             </p>
           </div>
           <div className="flex items-start">
-            <span className="text-green-500 text-xl mr-3 mt-1">🟢</span>
+            <span className="text-green-500 text-xl mr-3 mt-1">✅</span>
             <p className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200 leading-relaxed">
               {t("story.answer.content2")}
             </p>

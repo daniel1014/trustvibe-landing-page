@@ -11,7 +11,7 @@ export function HeroSection() {
   const [, setFormType] = useAtom(formTypeAtom)
 
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 py-20 pt-32 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col lg:flex-row items-center lg:justify-center px-6 md:px-12 py-20 pt-32 overflow-hidden">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-amber-50 dark:from-teal-950 dark:via-gray-900 dark:to-amber-950" />
 
@@ -20,9 +20,9 @@ export function HeroSection() {
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-amber-400/20 to-amber-600/20 rounded-full blur-xl" />
 
       {/* Left Section - Text Content */}
-      <div className="relative z-10 max-w-2xl lg:max-w-xl xl:max-w-2xl lg:pr-8">
+      <div className="relative z-10 max-w-2xl lg:max-w-xl xl:max-w-2xl">
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-teal-800 bg-clip-text text-transparent mb-6 leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-teal-800 bg-clip-text text-transparent mb-6 leading-tight whitespace-pre-line"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
