@@ -18,27 +18,46 @@ export function UserForm() {
   }
 
   const handleCheckboxChange = (field: string, value: string) => {
-    const currentValues = formData[field] || []
-    const newValues = currentValues.includes(value)
-      ? currentValues.filter((v: string) => v !== value)
-      : [...currentValues, value]
+    const currentValues: string[] = formData[field] || []
+    let newValues: string[]
 
+    if (currentValues.includes(value)) {
+      newValues = currentValues.filter((v: string) => v !== value)
+      // If "other" is unchecked, clear the "other" details
+      if (field === "ukStatus" && value === "other") {
+        setFormData((prev) => ({ ...prev, [field]: newValues, ukStatusOtherDetail: "" }))
+        return
+      }
+    } else {
+      newValues = [...currentValues, value]
+    }
     setFormData((prev) => ({ ...prev, [field]: newValues }))
   }
 
   const services = [
-    { id: "building", label: t("forms.building") },
+    { id: "handyman", label: t("forms.handyman") },
+    { id: "electrical", label: t("forms.electrical") },
     { id: "tutoring", label: t("forms.tutoring") },
     { id: "cleaning", label: t("forms.cleaning") },
     { id: "childcare", label: t("forms.childcare") },
     { id: "other", label: t("forms.other") },
   ]
 
-  const factors = [
-    { id: "price", label: t("forms.price") },
-    { id: "quality", label: t("forms.quality") },
-    { id: "speed", label: t("forms.speed") },
-    { id: "churchConnection", label: t("forms.churchConnection") },
+  // const factors = [
+  //   { id: "price", label: t("forms.price") },
+  //   { id: "quality", label: t("forms.quality") },
+  //   { id: "speed", label: t("forms.speed") },
+  //   { id: "churchConnection", label: t("forms.churchConnection") },
+  // ]
+
+  const ukStatusOptions = [
+    { id: "workingProfessional", label: t("forms.statusWorkingProfessional") },
+    { id: "student", label: t("forms.statusStudent") },
+    { id: "newImmigrant", label: t("forms.statusNewImmigrant") },
+    { id: "jobSeeker", label: t("forms.statusJobSeeker") },
+    { id: "retired", label: t("forms.statusRetired") },
+    { id: "churchLeader", label: t("forms.statusChurchLeader") },
+    { id: "other", label: t("forms.statusOther") },
   ]
 
   return (
@@ -59,9 +78,49 @@ export function UserForm() {
             </div>
           ))}
         </div>
+        {(formData.servicesNeeded || []).includes("other") && (
+            <div className="mt-3">
+                <Input
+                id="servicesNeededOtherDetail"
+                placeholder={t("forms.serviceOtherPlaceholder")}
+                value={formData.servicesNeededOtherDetail || ""}
+                onChange={(e) => handleChange("servicesNeededOtherDetail", e.target.value)}
+                className="text-sm"
+                />
+            </div>
+        )}
       </div>
 
       <div>
+        <Label className="text-base font-medium mb-2 block">
+          {t("forms.ukStatusQuestion")} <span className="text-red-500">*</span>
+        </Label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {ukStatusOptions.map((status) => (
+            <div key={status.id} className="flex items-center space-x-2">
+              <Checkbox
+                id={`ukUserStatus-${status.id}`}
+                checked={(formData.ukStatus || []).includes(status.id)}
+                onCheckedChange={() => handleCheckboxChange("ukStatus", status.id)}
+              />
+              <Label htmlFor={`ukUserStatus-${status.id}`}>{status.label}</Label>
+            </div>
+          ))}
+        </div>
+        {(formData.ukStatus || []).includes("other") && (
+          <div className="mt-3">
+            <Input
+              id="ukStatusOtherDetailUser"
+              placeholder={t("forms.statusOtherPlaceholder")}
+              value={formData.ukStatusOtherDetail || ""}
+              onChange={(e) => handleChange("ukStatusOtherDetail", e.target.value)}
+              className="text-sm"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* <div>
         <Label className="text-base font-medium mb-2 block">
           {t("forms.mostImportantFactor")} <span className="text-red-500">*</span>
         </Label>
@@ -76,7 +135,7 @@ export function UserForm() {
             </div>
           ))}
         </RadioGroup>
-      </div>
+      </div> */}
 
       <div>
         <Label htmlFor="expectations" className="text-base font-medium mb-2 block">
@@ -86,7 +145,8 @@ export function UserForm() {
           id="expectations"
           value={formData.expectations || ""}
           onChange={(e) => handleChange("expectations", e.target.value)}
-          rows={4}
+          rows={1}
+          className="min-h-[40px] max-h-[40px]"
         />
       </div>
 

@@ -63,13 +63,14 @@ export function SlideOutForm() {
 
       <motion.div
         key="slide-out-panel"
-        className="fixed top-0 right-0 bottom-0 w-full sm:w-[500px] lg:w-[600px] bg-white dark:bg-gray-900 shadow-2xl z-50 overflow-y-auto border-l border-teal-200/50 dark:border-teal-700/50"
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
+        className="fixed inset-0 z-50 flex items-center justify-center"
+        initial={{ y: "100vh" }}
+        animate={{ y: 0 }}
+        exit={{ y: "100vh" }}
         transition={{ type: "spring", damping: 25, stiffness: 180 }}
       >
-        <div className="p-6">
+
+        <div className="w-[90%] sm:max-w-lg md:max-w-2xl bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold">
               {formType === "provider" ? t("common.provideServices") : t("common.needServices")}
