@@ -7,9 +7,11 @@ import { ThemeProvider } from "next-themes"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Next.js Community Starter",
-  description: "A modern Next.js starter with theme support",
-    generator: 'v0.dev'
+  title: "TrustVibe - 英國華人基督徒的信任平台",
+  description: "TrustVibe - 英國華人基督徒的信任平台",
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
