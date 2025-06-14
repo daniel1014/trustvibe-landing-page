@@ -70,13 +70,11 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           {/* Hero Image */}
-          <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700">
-            <img
-              src="/images/hero.png"
-              alt="Trust Vibe - Connecting UK Chinese Christians with trusted service providers"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <img
+            src="/images/hero.png"
+            alt="Trust Vibe - Connecting UK Chinese Christians with trusted service providers"
+            className="relative z-10 w-full h-full object-cover rounded-2xl overflow-hidden"
+          />
 
           {/* Subtle background glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 via-amber-400/10 to-teal-600/20 rounded-2xl blur-xl -z-10" />
