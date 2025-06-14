@@ -100,6 +100,7 @@ const resources = {
         professional: "Professional",
         amateur: "Amateur",
         beginner: "Beginner",
+        selectExpertisePlaceholder: "Please select expertise",
       },
       segments: {
         getStartedToday: "Get Started Today",
@@ -204,6 +205,7 @@ const resources = {
         professional: "專業",
         amateur: "業餘",
         beginner: "初學者",
+        selectExpertisePlaceholder: "請選擇專業程度",
       },
       segments: {
         getStartedToday: "今天就開始",

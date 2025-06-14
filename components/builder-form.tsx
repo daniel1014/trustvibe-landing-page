@@ -10,44 +10,43 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Slider } from "@/components/ui/slider"
 
 // Define types for our service data structure
-type ServiceExpertise = "beginner" | "amateur" | "professional"
+type ServiceExpertise = "unselected" | "beginner" | "amateur" | "professional"
 type ServiceItem = {
   id: string
   expertise: ServiceExpertise
 }
 
-// Central configuration for expertise levels
-const expertiseLevelKeys: ServiceExpertise[] = ["beginner", "amateur", "professional"];
-
-const DEFAULT_EXPERTISE_LEVEL: ServiceExpertise = "beginner";
+const DEFAULT_EXPERTISE_LEVEL: ServiceExpertise = "unselected";
 
 // Helper to get configuration for an expertise level, including translated label
 const getExpertiseConfig = (level: ServiceExpertise, t: (key: string) => string) => {
   switch (level) {
+    case "unselected": // New case
+    return {
+      sliderValue: 0,
+      label: t("forms.selectExpertisePlaceholder"),
+      colorClass: "bg-gray-400 dark:bg-gray-600", // Neutral color
+    }
     case "beginner":
       return {
-        sliderValue: 16, // Snap point on 0-100 scale
+        sliderValue: 25, // Snap point on 0-100 scale
         label: t("forms.beginner"),
-        colorClass: "bg-sky-500 dark:bg-sky-700",
+        colorClass: "bg-pink-500 dark:bg-pink-700",
       }
     case "amateur":
       return {
-        sliderValue: 50,
+        sliderValue: 62,
         label: t("forms.amateur"),
         colorClass: "bg-amber-500 dark:bg-amber-700",
       }
     case "professional":
       return {
-        sliderValue: 83,
+        sliderValue: 90,
         label: t("forms.professional"),
         colorClass: "bg-emerald-500 dark:bg-emerald-700",
       }
-    default: // Should not happen with typed ServiceExpertise
-      return {
-        sliderValue: 16,
-        label: t("forms.beginner"),
-        colorClass: "bg-sky-500 dark:bg-sky-700",
-      }
+    default:
+      return getExpertiseConfig(DEFAULT_EXPERTISE_LEVEL, t)
   }
 }
 
@@ -74,11 +73,15 @@ export function BuilderForm() {
   const handleExpertiseChange = (serviceId: string, currentSliderValue: number) => {
     let newExpertise: ServiceExpertise = DEFAULT_EXPERTISE_LEVEL;
     // Determine expertise category based on slider's raw value
-    if (currentSliderValue <= 33) { // 0-33
+    // Thresholds: unselected (0-12), beginner (13-37), amateur (38-62), professional (63-100)
+    // These thresholds are midpoints between the snap points (0, 25, 50, 75)
+    if (currentSliderValue < 13) {         // Corresponds to 'unselected' (0)
+      newExpertise = "unselected";
+    } else if (currentSliderValue < 38) { // Corresponds to 'beginner' (25)
       newExpertise = "beginner";
-    } else if (currentSliderValue <= 66) { // 34-66
+    } else if (currentSliderValue < 70) { // Corresponds to 'amateur' (62)
       newExpertise = "amateur";
-    } else { // 67-100
+    } else {                              // Corresponds to 'professional' (90)
       newExpertise = "professional";
     }
 
@@ -187,7 +190,7 @@ export function BuilderForm() {
                       className="w-[180px]"
                       rangeColorClass={getCurrentExpertiseColorClass(serviceOpt.id)}
                     />
-                    <span className="text-xs font-medium w-16 text-center">
+                    <span className="text-xs font-medium w-24 text-center">
                       {getCurrentExpertiseLabel(serviceOpt.id)}
                     </span>
                   </div>

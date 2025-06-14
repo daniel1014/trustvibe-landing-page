@@ -70,7 +70,7 @@ export function SlideOutForm() {
         transition={{ type: "spring", damping: 25, stiffness: 180 }}
       >
 
-        <div className="w-[90%] sm:max-w-lg md:max-w-2xl bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6">
+        <div className="w-[90%] sm:max-w-lg md:max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold">
               {formType === "provider" ? t("common.provideServices") : t("common.needServices")}
