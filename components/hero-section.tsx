@@ -3,7 +3,7 @@
 import { useAtom } from "jotai"
 import { formTypeAtom } from "@/lib/atoms"
 import { useTranslation } from "./i18n-provider"
-import { Button } from "@/components/ui/button"
+import { ShinyButton } from "@/components/magicui/shiny-button"
 import { motion } from "framer-motion"
 import Image from "next/image" // Import next/image for optimized image rendering
 
@@ -38,28 +38,25 @@ export function HeroSection() {
         >
           {t("common.subtitle")}
         </motion.p>
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 px-8 py-4 text-lg font-semibold"
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div className="flex flex-col items-center">
+          <ShinyButton
             onClick={() => setFormType("provider")}
+            className="[--primary:#14b8a6] px-10 py-5 text-xl font-bold text-teal-700 bg-white border-2 border-teal-600 hover:bg-teal-50 transition-colors"
           >
             {t("common.provideServices")}
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-teal-600 text-teal-700 hover:bg-gradient-to-r hover:from-teal-50 hover:to-teal-100 dark:hover:from-teal-900 dark:hover:to-teal-800 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 px-8 py-4 text-lg font-semibold"
-            onClick={() => setFormType("user")}
-          >
-            {t("common.needServices")}
-          </Button>
-        </motion.div>
+          </ShinyButton>
+          <p className="mt-3 max-w-[400px] text-center text-sm text-gray-600 dark:text-gray-400">
+            只要你有心志，即使沒有經驗也可為這社區提供服務！
+          </p>
+        </div>
+        <ShinyButton
+          onClick={() => setFormType("user")}
+          className="[--primary:#14b8a6] px-10 py-5 text-xl font-bold text-teal-700 bg-white border-2 border-teal-600 hover:bg-teal-50 transition-colors"
+        >
+          {t("common.needServices")}
+        </ShinyButton>
+        </div>
       </div>
 
       {/* Right Section - Image with Pain Points */}
@@ -74,8 +71,9 @@ export function HeroSection() {
             src="/images/hero.png"
             alt="Trust Vibe - Connecting UK Chinese Christians with trusted service providers"
             fill
-            className="relative z-10 object-cover rounded-2xl overflow-hidden"
-            sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, (max-width: 1024px) 450px, 500px"
+            className="relative z-10 rounded-2xl overflow-hidden"
+            // sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, (max-width: 1024px) 450px, 500px"
+            objectFit="cover"     // equivalent of `object-cover` class
             priority
           />
 
