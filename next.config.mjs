@@ -9,7 +9,8 @@ const nextConfig = {
   images: {
     unoptimized: false,
   },
-  basePath: '/trustvibe'
+  basePath: '/trustvibe',
+  assetPrefix: '/trustvibe/',  // <-- Add this (ensures _next/static/... prefixes correctly)
 }
 
 export default nextConfig
