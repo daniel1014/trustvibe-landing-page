@@ -71,7 +71,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           <Image
-            src="/images/hero.png"
+            src="/trustvibe/images/hero.png"
             alt="Trust Vibe - Connecting UK Chinese Christians with trusted service providers"
             fill
             className="relative z-10 object-cover rounded-2xl overflow-hidden"
