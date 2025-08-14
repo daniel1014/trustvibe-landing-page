@@ -5,6 +5,7 @@ import { formTypeAtom } from "@/lib/atoms"
 import { useTranslation } from "./i18n-provider"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import Image from "next/image" // Import next/image for optimized image rendering
 
 export function HeroSection() {
   const { t } = useTranslation()
@@ -69,11 +70,13 @@ export function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          {/* Hero Image */}
-          <img
+          <Image
             src="/images/hero.png"
             alt="Trust Vibe - Connecting UK Chinese Christians with trusted service providers"
-            className="relative z-10 w-full h-full object-cover rounded-2xl overflow-hidden"
+            fill
+            className="relative z-10 object-cover rounded-2xl overflow-hidden"
+            sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, (max-width: 1024px) 450px, 500px"
+            priority
           />
 
           {/* Subtle background glow */}
