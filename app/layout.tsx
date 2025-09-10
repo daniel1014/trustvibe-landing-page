@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "TrustVibe - 英國華人基督徒的信任平台",
   description: "TrustVibe - 英國華人基督徒的信任平台",
   icons: {
-    icon: '/trustvibe/favicon.png',
+    icon: '/favicon.png',
   },
 }
 
