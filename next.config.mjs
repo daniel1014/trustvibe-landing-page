@@ -9,7 +9,6 @@ const nextConfig = {
   images: {
     unoptimized: false,
   },
-  basePath: '/trustvibe'
 }
 
 export default nextConfig
