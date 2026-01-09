@@ -6,6 +6,7 @@ import { useTranslation } from "./i18n-provider"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Image from "next/image" // Import next/image for optimized image rendering
+import heroImage from "@/public/images/hero.png" // Static import handles basePath automatically
 
 export function HeroSection() {
   const { t } = useTranslation()
@@ -71,7 +72,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           <Image
-            src="/images/hero.png"
+            src={heroImage}
             alt="Trust Vibe - Connecting UK Chinese Christians with trusted service providers"
             fill
             className="relative z-10 object-cover rounded-2xl overflow-hidden"
