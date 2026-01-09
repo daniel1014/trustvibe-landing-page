@@ -9,9 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "TrustVibe - 英國華人基督徒的信任平台",
   description: "TrustVibe - 英國華人基督徒的信任平台",
-  icons: {
-    icon: '/favicon.png',
-  },
+
 }
 
 export default function RootLayout({
